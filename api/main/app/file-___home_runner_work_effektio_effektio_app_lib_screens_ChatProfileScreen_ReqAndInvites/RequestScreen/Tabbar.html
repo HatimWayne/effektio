@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the Tabbar method from the RequestScreen extension, for the Dart programming language.">
+  <title>Tabbar method - RequestScreen extension - ReqAndInvites library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">effektio</a></li>
+    <li><a href="../../file-___home_runner_work_effektio_effektio_app_lib_screens_ChatProfileScreen_ReqAndInvites/file-___home_runner_work_effektio_effektio_app_lib_screens_ChatProfileScreen_ReqAndInvites-library.html">ReqAndInvites</a></li>
+    <li><a href="../../file-___home_runner_work_effektio_effektio_app_lib_screens_ChatProfileScreen_ReqAndInvites/RequestScreen-class.html">RequestScreen</a></li>
+    <li class="self-crumb">Tabbar method</li>
+  </ol>
+  <div class="self-name">Tabbar</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span class="material-symbols-outlined">
+        brightness_4
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-method">Tabbar</span> method 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype">dynamic</span>
+<span class="name ">Tabbar</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="Tabbar-param-context"><span class="type-annotation">dynamic</span> <span class="parameter-name">context</span>, </span></li>
+<li><span class="parameter" id="Tabbar-param-reqLength"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">reqLength</span>, </span></li>
+<li><span class="parameter" id="Tabbar-param-pendingLength"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">pendingLength</span></span></li>
+</ol>)
+
+      
+
+    </section>
+    
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Widget Tabbar(BuildContext context, int reqLength, int pendingLength) {
+  return DefaultTabController(
+    length: 2,
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: &lt;Widget&gt;[
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: TabBar(
+            labelColor: Colors.white, &#47;&#47;&lt;-- selected text color
+            unselectedLabelColor: Colors.white,
+            indicator: BoxDecoration(
+              borderRadius: BorderRadius.circular(15), &#47;&#47; Creates border
+              color: AppCommonTheme.primaryColor,
+            ),
+            indicatorPadding: const EdgeInsets.only(top: 6, bottom: 6),
+            tabs: const [
+              Tab(
+                text: &#39;Invites&#39;,
+              ),
+              Tab(text: &#39;Requests&#39;),
+            ],
+          ),
+        ),
+        Expanded(
+          child: TabBarView(
+            children: [
+              Column(
+                children: [
+                  Visibility(
+                    visible: (pendingLength &gt; 0) ? true : false,
+                    child: ListView.builder(
+                      itemCount: pendingLength,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(
+                            left: 8,
+                            right: 8,
+                            top: 8,
+                          ),
+                          child: PendingReqListView(name: &#39;Ben&#39;),
+                        );
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 200),
+                    child: Visibility(
+                      visible: (pendingLength == 0),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 200,
+                            width: 200,
+                            child: FittedBox(
+                              fit: BoxFit.contain,
+                              child: Image.asset(
+                                &#39;assets&#47;images&#47;no_req.png&#39;,
+                              ),
+                            ),
+                          ),
+                          const Text(
+                            &#39;No Invite Yet&#39;,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.all(8),
+                            child: Text(
+                              &#39;People on this list are attempting to join via the group link.&#39;,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Column(
+                children: [
+                  Visibility(
+                    visible: (reqLength &gt; 0),
+                    child: ListView.builder(
+                      itemCount: reqLength,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: EdgeInsets.only(
+                            left: 8,
+                            right: 8,
+                            top: 8,
+                          ),
+                          child: ReqListView(name: &#39;Ben&#39;),
+                        );
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 200),
+                    child: Visibility(
+                      visible: (reqLength == 0),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 200,
+                            width: 200,
+                            child: FittedBox(
+                              fit: BoxFit.contain,
+                              child: Image.asset(
+                                &#39;assets&#47;images&#47;no_req.png&#39;,
+                              ),
+                            ),
+                          ),
+                          const Text(
+                            &#39;No Requests Yet&#39;,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.all(8),
+                            child: Text(
+                              &#39;People on this list are attempting to join via the group link.&#39;,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">effektio</a></li>
+  <li><a href="../../file-___home_runner_work_effektio_effektio_app_lib_screens_ChatProfileScreen_ReqAndInvites/file-___home_runner_work_effektio_effektio_app_lib_screens_ChatProfileScreen_ReqAndInvites-library.html">ReqAndInvites</a></li>
+  <li><a href="../../file-___home_runner_work_effektio_effektio_app_lib_screens_ChatProfileScreen_ReqAndInvites/RequestScreen-class.html">RequestScreen</a></li>
+  <li class="self-crumb">Tabbar method</li>
+</ol>
+
+
+    <h5>RequestScreen class</h5>
+    <ol>
+
+        <li class="section-title"><a href="../../file-___home_runner_work_effektio_effektio_app_lib_screens_ChatProfileScreen_ReqAndInvites/RequestScreen-class.html#constructors">Constructors</a></li>
+          <li><a href="../../file-___home_runner_work_effektio_effektio_app_lib_screens_ChatProfileScreen_ReqAndInvites/RequestScreen/RequestScreen.html">RequestScreen</a></li>
+
+
+        <li class="section-title inherited">
+          <a href="../../file-___home_runner_work_effektio_effektio_app_lib_screens_ChatProfileScreen_ReqAndInvites/RequestScreen-class.html#instance-properties">Properties</a>
+        </li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+
+        <li class="section-title"><a href="../../file-___home_runner_work_effektio_effektio_app_lib_screens_ChatProfileScreen_ReqAndInvites/RequestScreen-class.html#instance-methods">Methods</a></li>
+          <li><a href="../../file-___home_runner_work_effektio_effektio_app_lib_screens_ChatProfileScreen_ReqAndInvites/RequestScreen/build.html">build</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+          <li><a href="../../file-___home_runner_work_effektio_effektio_app_lib_screens_ChatProfileScreen_ReqAndInvites/RequestScreen/Tabbar.html">Tabbar</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
+
+        <li class="section-title inherited"><a href="../../file-___home_runner_work_effektio_effektio_app_lib_screens_ChatProfileScreen_ReqAndInvites/RequestScreen-class.html#operators">Operators</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    effektio
+      0.0.1+1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

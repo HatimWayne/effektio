@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["effektio"] = [{"text":"impl <a class=\"trait\" href=\"lazy_static/trait.LazyStatic.html\" title=\"trait lazy_static::LazyStatic\">LazyStatic</a> for <a class=\"struct\" href=\"effektio/api/struct.RUNTIME.html\" title=\"struct effektio::api::RUNTIME\">RUNTIME</a>","synthetic":false,"types":["effektio::api::RUNTIME"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

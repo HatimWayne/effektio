@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["flexi_logger"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html\" title=\"trait alloc::string::ToString\">ToString</a> for <a class=\"struct\" href=\"flexi_logger/struct.LogSpecification.html\" title=\"struct flexi_logger::LogSpecification\">LogSpecification</a>","synthetic":false,"types":["flexi_logger::log_specification::LogSpecification"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
